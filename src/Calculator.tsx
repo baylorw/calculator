@@ -32,7 +32,7 @@ class Calculator extends React.Component {
      * 
      * @param {} recallWeight 
      */
-    getFScore = (recallWeight) => {
+    getFScore = (recallWeight: number) => {
         const squaredRecall = recallWeight^2
         const numerator = (1 + squaredRecall) * this.state.tP
         const denominator = numerator + (this.state.fN * squaredRecall) + this.state.fP
@@ -40,22 +40,22 @@ class Calculator extends React.Component {
         return f
     }
 
-    onTPChange = e => {
+    onTPChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const input = e.target.value.replace(/\D/,'')
         const number = parseInt(input)
         this.setState({tP: number})
     }
-    onTNChange = e => {
+    onTNChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const input = e.target.value.replace(/\D/,'')
         const number = parseInt(input)
 		this.setState({tN: number})
     }
-    onFPChange = e => {
+    onFPChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const input = e.target.value.replace(/\D/,'')
         const number = parseInt(input)
 		this.setState({fP: number})
     }
-    onFNChange = e => {
+    onFNChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const input = e.target.value.replace(/\D/,'')
         const number = parseInt(input)
 		this.setState({fN: number})
@@ -65,29 +65,29 @@ class Calculator extends React.Component {
         return (
             <div>
               <h1>Confusion Matrix</h1>
-              <table border="1">
+              <table style={{borderWidth: 1}}>
                 <tr>
-                    <td colSpan="2"></td><td colSpan="2" align="center">Reality</td><td>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</td>
+                    <td colSpan={2}></td><td colSpan={2} align="center">Reality</td><td>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</td>
                 </tr>
                 <tr>
-                    <td colSpan="2"></td><td><b>Positive</b></td><td><b>Negative</b></td><td>&nbsp;</td>
+                    <td colSpan={2}></td><td><b>Positive</b></td><td><b>Negative</b></td><td>&nbsp;</td>
                 </tr>
                 <tr>
-                    <td rowspan="2">Reported</td>
+                    <td rowSpan={2}>Reported</td>
                     <td><b>Positive</b></td>
-                    <td><input type="text" value={this.state.tP} size="5" onChange={this.onTPChange} style={{backgroundColor:'lightgreen', textAlign:"right"}}/></td>
-                    <td><input type="text" value={this.state.fP} size="5" onChange={this.onFPChange} style={{backgroundColor:'salmon', textAlign:"right"}}/></td>
+                    <td><input type="text" value={this.state.tP} size={5} onChange={this.onTPChange} style={{backgroundColor:'lightgreen', textAlign:"right"}}/></td>
+                    <td><input type="text" value={this.state.fP} size={5} onChange={this.onFPChange} style={{backgroundColor:'salmon', textAlign:"right"}}/></td>
                     <td align="right">{this.getReportedP()}</td>
                 </tr>
                 <tr>
                     
                     <td><b>Negative</b></td>
-                    <td><input type="text" value={this.state.fN} size="5" onChange={this.onFNChange} style={{backgroundColor:'salmon', textAlign:"right"}}/></td>
-                    <td><input type="text" value={this.state.tN} size="5" onChange={this.onTNChange} style={{backgroundColor:'lightgreen', textAlign:"right"}}/></td>
+                    <td><input type="text" value={this.state.fN} size={5} onChange={this.onFNChange} style={{backgroundColor:'salmon', textAlign:"right"}}/></td>
+                    <td><input type="text" value={this.state.tN} size={5} onChange={this.onTNChange} style={{backgroundColor:'lightgreen', textAlign:"right"}}/></td>
                     <td align="right">{this.getReportedN()}</td>
                 </tr>
                 <tr> 
-                    <td colSpan="2"></td>
+                    <td colSpan={2}></td>
                     <td align="right">{this.getActualP()}</td>
                     <td align="right">{this.getActualN()}</td>
                     <td align="right">{this.getTotal()}</td>
@@ -98,7 +98,7 @@ class Calculator extends React.Component {
 
               <table>
                 <tr>
-                    <td>Accuracy:</td><td>{100*((this.state.tP + this.state.tN) / this.getTotal()).toFixed(2)}%</td>
+                    <td>Accuracy:</td><td>{(100*(this.state.tP + this.state.tN) / this.getTotal()).toFixed(2)}%</td>
                     <td>&nbsp; &nbsp; &nbsp; &nbsp;</td>
                     <td>Sensitivity:</td><td>{(this.state.tP / this.getActualP()).toFixed(2)}</td>
                     <td>&nbsp; &nbsp; &nbsp; &nbsp;</td>

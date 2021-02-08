@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 
 class Calculator extends React.Component {
-	state = {
+    state = {
         tP: 0,
         tN: 0,
         fP: 0,
@@ -100,28 +100,48 @@ class Calculator extends React.Component {
                 <tr>
                     <td>Accuracy:</td><td>{(100*(this.state.tP + this.state.tN) / this.getTotal()).toFixed(2)}%</td>
                     <td>&nbsp; &nbsp; &nbsp; &nbsp;</td>
-                    <td>Sensitivity:</td><td>{(this.state.tP / this.getActualP()).toFixed(2)}</td>
+                    <td>
+                        <abbr title="What percentage of positives were found?">Sensitivity</abbr>:</td>
+                        <td>{(this.state.tP / this.getActualP()).toFixed(2)}</td>
                     <td>&nbsp; &nbsp; &nbsp; &nbsp;</td>
-                    <td>Recall:</td><td>{(this.state.tP / this.getActualP()).toFixed(2)}</td>
+                    <td>
+                        <abbr title="What percentage of positives were found?">Recall:</abbr></td>
+                        <td>{(this.state.tP / this.getActualP()).toFixed(2)}</td>
                     <td>&nbsp; &nbsp; &nbsp; &nbsp;</td>
-                    <td>F:</td><td>{this.getFScore(1).toFixed(2)}</td>
+                    <td>
+                        <abbr title="The average of precision and recall">F</abbr>:</td>
+                        <td>{this.getFScore(1).toFixed(2)}</td>
                     <td>&nbsp; &nbsp; &nbsp; &nbsp;</td>
-                    <td>PPV:</td><td>{(this.state.tP / this.getReportedP()).toFixed(2)}</td>
+                    <td>
+                        <abbr title="Positive Predictive Value">PPV</abbr>:</td>
+                        <td>{(this.state.tP / this.getReportedP()).toFixed(2)}</td>
                     <td>&nbsp; &nbsp; &nbsp; &nbsp;</td>
-                    <td>FDR:</td><td>{(this.state.fP / this.getReportedP()).toFixed(2)}</td>
+                    <td>
+                        <abbr title="False Discovery Rate">FDR</abbr>:</td>
+                        <td>{(this.state.fP / this.getReportedP()).toFixed(2)}</td>
                 </tr>
                 <tr>
                     <td></td><td></td>
                     <td>&nbsp;</td>
-                    <td>Specificity:</td><td>{(this.state.tN / this.getActualN()).toFixed(2)}</td>
+                    <td>
+                        <abbr title="What percentage of negatives were found?">Specificity</abbr>:</td>
+                        <td>{(this.state.tN / this.getActualN()).toFixed(2)}</td>
                     <td>&nbsp;</td>
-                    <td>Precision:</td><td>{(this.state.tP / this.getReportedP()).toFixed(2)}</td>
+                    <td>
+                        <abbr title="What percentage of reported positives were actually positive?">Precision</abbr>:</td>
+                        <td>{(this.state.tP / this.getReportedP()).toFixed(2)}</td>
                     <td>&nbsp;</td>
-                    <td>F 1/2:</td><td>{this.getFScore(0.5).toFixed(2)}</td>
+                    <td>
+                        <abbr title="The weighted average of precision and recall with recall worth half as much">F 1/2</abbr>:</td>
+                        <td>{this.getFScore(0.5).toFixed(2)}</td>
                     <td>&nbsp;</td>
-                    <td>NPV:</td><td>{(this.state.tN / this.getReportedN()).toFixed(2)}</td>
+                    <td>
+                        <abbr title="Negative Predictive Value">NPV</abbr>:</td>
+                        <td>{(this.state.tN / this.getReportedN()).toFixed(2)}</td>
                     <td>&nbsp;</td>
-                    <td>FOR:</td><td>{(this.state.fN / this.getReportedN()).toFixed(2)}</td>
+                    <td>
+                        <abbr title="False Omission Rate">FOR:</abbr></td>
+                        <td>{(this.state.fN / this.getReportedN()).toFixed(2)}</td>
                 </tr>
                 <tr>
                     <td></td><td></td>
@@ -130,7 +150,7 @@ class Calculator extends React.Component {
                     <td></td>
                     <td></td><td></td>
                     <td></td>
-                    <td>F 2:</td><td>{this.getFScore(2).toFixed(2)}</td>
+                    <td><abbr title="The weighted average of precision and recall with recall worth twice as much">F 2</abbr>:</td><td>{this.getFScore(2).toFixed(2)}</td>
                     <td></td>
                     <td></td><td></td>
                     <td></td>

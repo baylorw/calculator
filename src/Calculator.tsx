@@ -1,17 +1,9 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-
 class Calculator extends React.Component {
-	constructor(props) 
-	{
-		super(props)
-		this.state = 
-		{
-			tP: 0,
-			tN: 0,
-			fP: 0,
-            fN: 0,
-        }
+	state = {
+        tP: 0,
+        tN: 0,
+        fP: 0,
+        fN: 0,
     }
 
     getActualP = () => {
@@ -146,7 +138,5 @@ class Calculator extends React.Component {
           );        
     }
 }
-
-export default Calculator;
 
 ReactDOM.render(<Calculator />, document.getElementById('root'));

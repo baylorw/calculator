@@ -1,0 +1,13 @@
+{
+  "include": ["src"],
+  "compilerOptions": {
+    "target": "es5",
+    "module": "none",
+    "lib": ["esnext", "dom"],
+    "jsx": "react",
+    "strict": true,
+    "sourceMap": true,
+    "outFile": "calculator.js",
+    "esModuleInterop": true
+  }
+}
